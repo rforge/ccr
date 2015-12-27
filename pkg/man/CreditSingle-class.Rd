@@ -3,6 +3,7 @@
 \docType{class}
 \name{CreditSingle-class}
 \alias{CreditSingle}
+\alias{CreditSingle-class}
 \title{Credit Single Class}
 \arguments{
 \item{Notional}{The notional amount of the trade}

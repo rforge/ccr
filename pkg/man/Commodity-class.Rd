@@ -3,6 +3,7 @@
 \docType{class}
 \name{Commodity-class}
 \alias{Commodity}
+\alias{Commodity-class}
 \title{Commodity Class}
 \arguments{
 \item{Notional}{The notional amount of the trade}

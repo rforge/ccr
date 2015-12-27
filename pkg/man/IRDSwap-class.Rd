@@ -3,6 +3,7 @@
 \docType{class}
 \name{IRDSwap-class}
 \alias{IRDSwap}
+\alias{IRDSwap-class}
 \title{IRD Swap Class}
 \arguments{
 \item{Notional}{The notional amount of the trade}

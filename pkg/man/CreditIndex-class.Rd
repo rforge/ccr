@@ -3,6 +3,7 @@
 \docType{class}
 \name{CreditIndex-class}
 \alias{CreditIndex}
+\alias{CreditIndex-class}
 \title{Credit Index Class}
 \arguments{
 \item{Notional}{The notional amount of the trade}
