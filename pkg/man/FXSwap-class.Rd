@@ -2,7 +2,6 @@
 % Please edit documentation in R/FX.R
 \name{FXSwap-class}
 \alias{FXSwap}
-\alias{FXSwap-class}
 \title{FX Swap Class}
 \arguments{
 \item{Notional}{The notional amount of the trade}

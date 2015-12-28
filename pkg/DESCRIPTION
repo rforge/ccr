@@ -17,4 +17,4 @@ Collate: 'CSA.R' 'CalcAddon.R' 'CalcEAD.R' 'CalcPFE.R' 'CalcRC.R'
         'ExampleIRDCommMargined.R' 'ExampleIRDCredit.R' 'FX.R' 'IRD.R'
         'LoadSupervisoryData.R' 'runExampleCalcs.R'
 NeedsCompilation: no
-Packaged: 2015-12-27 13:48:33 UTC; tasos
+Packaged: 2015-12-28 10:46:34 UTC; tasos
