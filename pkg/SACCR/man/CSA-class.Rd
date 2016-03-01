@@ -3,6 +3,7 @@
 \docType{class}
 \name{CSA-class}
 \alias{CSA}
+\alias{CSA-class}
 \title{CSA Class}
 \arguments{
 \item{thres_cpty}{The maximum exposure that can be generated against the counterparty before collateral will need to be posted}

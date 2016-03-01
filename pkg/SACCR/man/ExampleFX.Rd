@@ -7,7 +7,7 @@
 ExampleFX()
 }
 \value{
-The exposure at default (expected value is 364)
+The exposure at default
 }
 \description{
 Calculates the Exposure at Default for the FX product type
