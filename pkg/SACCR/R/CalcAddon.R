@@ -14,7 +14,7 @@ CalcAddon <- function(trades_tree, MF)  {
   
   superv <- LoadSupervisoryData()
   
-  asset_classes = trades_tree$children
+  asset_classes = trades_tree$`Asset Classes`$children
   asset_class_names = names(asset_classes)
   trades_tree$addon = 0
   # going through each trade class
@@ -26,7 +26,7 @@ CalcAddon <- function(trades_tree, MF)  {
     
     if(asset_class_names[i]=='FX')
     {
-      ccypairs   <- asset_class_node$children
+      ccypairs   <- asset_class_node$`Currency Pairs`$children
       # for the FX case the Hedging sets will be created based on the ccy pair
       ccypairs_names  <- names(ccypairs)
       ccypairs_addon <- array(data<-0,dim<-length(ccypairs))
@@ -34,7 +34,7 @@ CalcAddon <- function(trades_tree, MF)  {
       for (j  in 1:length(ccypairs_names))
       {
         
-        ccypairs_trades  <- ccypairs[[ccypairs_names[j]]]$children
+        ccypairs_trades  <- ccypairs[[ccypairs_names[j]]]$Trades$children
         ccypairs[[ccypairs_names[j]]]$add_on = 0
         ccypairs_trades_names = names(ccypairs_trades)
         
@@ -52,7 +52,7 @@ CalcAddon <- function(trades_tree, MF)  {
         supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==ccypairs_trade$trade$TradeGroup]
         ccypairs[[ccypairs_names[j]]]$supervisory_factor = supervisory_factor
         ccypairs_addon[j] = supervisory_factor*ccypairs[[ccypairs_names[j]]]$add_on
-        ccypairs[[ccypairs_names[j]]]$addon = ccypairs_addon[j]
+        ccypairs[[ccypairs_names[j]]]$add_on = abs(ccypairs_addon[j])
       }
       asset_class_node$addon = sum(abs(ccypairs_addon))
       trades_tree$addon = trades_tree$addon + asset_class_node$addon
@@ -60,12 +60,12 @@ CalcAddon <- function(trades_tree, MF)  {
     {
       
       # picking up the currencies found in the IRD trades which will be the first-level grouping applied 
-      currencies   <-  asset_class_node$children
+      currencies   <-  asset_class_node$Currencies$children
       currencies_names  <- names(currencies)
       for (j  in 1:length(currencies_names))
       {
         
-        currencies_buckets  <- currencies[[currencies_names[j]]]$children
+        currencies_buckets  <- currencies[[currencies_names[j]]]$Timebuckets$children
         
         currencies_buckets_names = names(currencies_buckets)
         
@@ -73,7 +73,7 @@ CalcAddon <- function(trades_tree, MF)  {
         {
           currencies_buckets[[currencies_buckets_names[k]]]$effective_notional = 0
           #picking up all the trades belonging to a specific timebucket
-          timebuckets_trades  <- currencies_buckets[[currencies_buckets_names[k]]]$children
+          timebuckets_trades  <- currencies_buckets[[currencies_buckets_names[k]]]$Trades$children
           
           timebuckets_trades_names = names(timebuckets_trades)
           
@@ -101,7 +101,7 @@ CalcAddon <- function(trades_tree, MF)  {
     }else  if(asset_class_names[i]=='Credit')
     {
       asset_class_node$addon = 0
-      refEntities   <- asset_class_node$children
+      refEntities   <- asset_class_node$`Reference Entities`$children
       # for the FX case the Hedging sets will be created based on the ccy pair
       refEntities_names  <- names(refEntities)
       refEntities_addon <- array(data<-0,dim<-length(refEntities))
@@ -110,7 +110,7 @@ CalcAddon <- function(trades_tree, MF)  {
       supervisory_corel <- array(data<-0,dim<-length(refEntities_names))
       for (j  in 1:length(refEntities_names))
       {  
-        refEntities_trades  <- refEntities[[refEntities_names[j]]]$children
+        refEntities_trades  <- refEntities[[refEntities_names[j]]]$Trades$children
         refEntities[[refEntities_names[j]]]$add_on = 0
         
         refEntities_trades_names = names(refEntities_trades)        
@@ -139,7 +139,7 @@ CalcAddon <- function(trades_tree, MF)  {
     {
       AssetClass <-'Commodity'
       
-      HedgingSets   <- asset_class_node$children
+      HedgingSets   <- asset_class_node$`Hedging Sets`$children
       # for the FX case the Hedging sets will be created based on the ccy pair
       HedgingSets_names  <- names(HedgingSets)
       
@@ -150,7 +150,7 @@ CalcAddon <- function(trades_tree, MF)  {
       for (j  in 1:length(HedgingSets_names))
       {
         
-        com_types  <- HedgingSets[[HedgingSets_names[j]]]$children
+        com_types  <- HedgingSets[[HedgingSets_names[j]]]$`Commodities Types`$children
         
         com_types_names = names(com_types)
         com_types_addon = 0
@@ -159,7 +159,7 @@ CalcAddon <- function(trades_tree, MF)  {
         {
           com_types[[com_types_names[k]]]$addon = 0
           com_types[[com_types_names[k]]]$effective_notional = 0
-          com_types_trades  <- com_types[[com_types_names[k]]]$children
+          com_types_trades  <- com_types[[com_types_names[k]]]$Trades$children
           com_types_trades_names  <- names(com_types_trades)
           
           for (l in 1:length(com_types_trades_names))
@@ -189,7 +189,7 @@ CalcAddon <- function(trades_tree, MF)  {
     }else  if(asset_class_names[i]=='EQ')
     {
       asset_class_node$addon = 0
-      refEntities   <- asset_class_node$children
+      refEntities   <- asset_class_node$`Reference Entities`$children
       # for the FX case the Hedging sets will be created based on the ccy pair
       refEntities_names  <- names(refEntities)
       refEntities_addon <- array(data<-0,dim<-length(refEntities))
@@ -198,7 +198,7 @@ CalcAddon <- function(trades_tree, MF)  {
       supervisory_corel <- array(data<-0,dim<-length(refEntities_names))
       for (j  in 1:length(refEntities_names))
       {  
-        refEntities_trades  <- refEntities[[refEntities_names[j]]]$children
+        refEntities_trades  <- refEntities[[refEntities_names[j]]]$Trades$children
         refEntities[[refEntities_names[j]]]$add_on = 0
         
         refEntities_trades_names = names(refEntities_trades)        
