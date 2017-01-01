@@ -50,15 +50,15 @@ runExampleCalcs <-function(trades, csas, colls)
       # calculating the RC and the V-c amount
     if(i>length(csas))
     {
-      trade_trees[[i]]$rc_values <- CalcRC(trades_temp[[i]])
+      trade_trees[[i]]$`Replacement Cost` <- CalcRC(trades_temp[[i]])
     }else
-    {      trade_trees[[i]]$rc_values <- CalcRC(trades_temp[[i]], csas[[i]], colls)   }
+    {      trade_trees[[i]]$`Replacement Cost` <- CalcRC(trades_temp[[i]], csas[[i]], colls)   }
       
       # calculating the PFE after multiplying the addon with a factor if V-C<0
-    trade_trees[[i]]$PFE <- CalcPFE(trade_trees[[i]]$rc_values$V_C, trade_trees[[i]]$addon)
+    trade_trees[[i]]$PFE <- CalcPFE(trade_trees[[i]]$`Replacement Cost`$V_C, trade_trees[[i]]$addon)
       
       # calculating the Exposure-at-Default
-    trade_trees[[i]]$EAD <- CalcEAD(trade_trees[[i]]$rc_values$RC,trade_trees[[i]]$PFE)
+    trade_trees[[i]]$EAD <- CalcEAD(trade_trees[[i]]$`Replacement Cost`$RC,trade_trees[[i]]$PFE)
   }
   return(trade_trees)
 }
