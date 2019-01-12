@@ -15,9 +15,9 @@ Description: Computes the Exposure-At-Default based on standardized approach
     also identified and treated in specific hedging sets whereby the corresponding 
     penalty factors are applied. All the examples appearing on the
     regulatory paper (including the margined and the un-margined workflow) have been
-    implemented.
+    implemented including the latest FAQ enhancements.
 License: GPL-3
-Imports: methods,Trading,data.tree,jsonlite
+Imports: methods,Trading (>= 1.2),data.tree,jsonlite
 URL: www.openriskcalculator.com
 Collate: 'CalcAddon.R' 'CalcEAD.R' 'CalcPFE.R' 'CalcRC.R'
         'ExampleBasisVol.R' 'ExampleComm.R' 'ExampleCredit.R'
