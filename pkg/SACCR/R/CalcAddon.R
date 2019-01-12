@@ -79,7 +79,7 @@ CalcAddon <- function(trades_tree, MF)  {
           
           factor_mult = CalculateFactorMult(currencies_names[j])
           
-          supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==timebuckets_trades[[1]]$trade$TradeGroup&superv$SubClass==timebuckets_trade$trade$SubClass]
+          supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==timebuckets_trades[[1]]$trade$TradeGroup&superv$SubClass==timebuckets_trades[[1]]$trade$SubClass]
           currencies[[currencies_names[j]]]$supervisory_factor = supervisory_factor
           
           exotic_identifier = ''
@@ -91,7 +91,7 @@ CalcAddon <- function(trades_tree, MF)  {
 
             currencies_buckets[[currencies_buckets_names[k]]]$effective_notional = currencies_buckets[[currencies_buckets_names[k]]]$effective_notional + timebuckets_trade$exposure_details$effective_notional
             
-            if(!is.null(timebuckets_trade$trade$Exotic_Type))
+            if(!is.null(timebuckets_trade$trade$Exotic_Type)&length(timebuckets_trade$trade$Exotic_Type)!=0)
             {
               if(exotic_identifier!='')
               {  exotic_identifier = timebuckets_trade$trade$Exotic_Type
