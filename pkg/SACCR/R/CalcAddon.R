@@ -79,7 +79,7 @@ CalcAddon <- function(trades_tree, MF)  {
           
           factor_mult = CalculateFactorMult(currencies_names[j])
           
-          supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==timebuckets_trade$trade$TradeGroup&superv$SubClass==timebuckets_trade$trade$SubClass]
+          supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==timebuckets_trades[[1]]$trade$TradeGroup&superv$SubClass==timebuckets_trade$trade$SubClass]
           currencies[[currencies_names[j]]]$supervisory_factor = supervisory_factor
           
           exotic_identifier = ''

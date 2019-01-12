@@ -17,7 +17,7 @@ Description: Computes the Exposure-At-Default based on standardized approach
     regulatory paper (including the margined and the un-margined workflow) have been
     implemented including the latest FAQ enhancements.
 License: GPL-3
-Imports: methods, data.tree, jsonlite, Trading (>= 1.2)
+Imports: methods, data.tree, jsonlite, Trading
 URL: www.openriskcalculator.com
 Collate: 'CalcAddon.R' 'CalcEAD.R' 'CalcPFE.R' 'CalcRC.R'
         'ExampleBasisVol.R' 'ExampleComm.R' 'ExampleCredit.R'
