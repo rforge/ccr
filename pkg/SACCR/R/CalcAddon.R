@@ -77,16 +77,37 @@ CalcAddon <- function(trades_tree, MF)  {
           
           timebuckets_trades_names = names(timebuckets_trades)
           
-          for (l in 1:length(timebuckets_trades_names))
-          {
-            timebuckets_trade = timebuckets_trades[[timebuckets_trades_names[l]]]
-            timebuckets_trade$exposure_details = SingleTradeAddon(timebuckets_trade$trade,MF)
-            currencies_buckets[[currencies_buckets_names[k]]]$effective_notional = currencies_buckets[[currencies_buckets_names[k]]]$effective_notional + timebuckets_trade$exposure_details$effective_notional
-          }
           factor_mult = CalculateFactorMult(currencies_names[j])
           
           supervisory_factor <- factor_mult*superv$Supervisory_factor[superv$Asset_Class==timebuckets_trade$trade$TradeGroup&superv$SubClass==timebuckets_trade$trade$SubClass]
           currencies[[currencies_names[j]]]$supervisory_factor = supervisory_factor
+          
+          exotic_identifier = ''
+          digital_eff_notional = 0
+          for (l in 1:length(timebuckets_trades_names))
+          {
+            timebuckets_trade = timebuckets_trades[[timebuckets_trades_names[l]]]
+            timebuckets_trade$exposure_details = SingleTradeAddon(timebuckets_trade$trade,MF)
+
+            currencies_buckets[[currencies_buckets_names[k]]]$effective_notional = currencies_buckets[[currencies_buckets_names[k]]]$effective_notional + timebuckets_trade$exposure_details$effective_notional
+            
+            if(!is.null(timebuckets_trade$trade$Exotic_Type))
+            {
+              if(exotic_identifier!='')
+              {  exotic_identifier = timebuckets_trade$trade$Exotic_Type
+                 digital_eff_notional = digital_eff_notional + timebuckets_trade$exposure_details$effective_notional
+              }else if(exotic_identifier==timebuckets_trade$trade$Exotic_Type)
+              {
+                digital_eff_notional = digital_eff_notional + timebuckets_trade$exposure_details$effective_notional
+                
+                excess_notional = abs(digital_eff_notional) - abs(timebuckets_trade$trade_details$Notional/supervisory_factor)
+                currencies_buckets[[currencies_buckets_names[k]]]$effective_notional = currencies_buckets[[currencies_buckets_names[k]]]$effective_notional - max(excess_notional,0)
+                exotic_identifier = ''
+                digital_eff_notional = 0
+              }
+            }
+          }
+
           # aggregating the add-on timebuckets recognizing correlation between each time bucket
           currencies[[currencies_names[j]]]$effective_notional = (sum(currencies_buckets[["1"]]$effective_notional^2,currencies_buckets[["2"]]$effective_notional^2,currencies_buckets[["3"]]$effective_notional^2,1.4*currencies_buckets[["2"]]$effective_notional*currencies_buckets[["3"]]$effective_notional,1.4*currencies_buckets[["2"]]$effective_notional*currencies_buckets[["1"]]$effective_notional,0.6*currencies_buckets[["2"]]$effective_notional*currencies_buckets[["1"]]$effective_notional,na.rm = TRUE))^0.5
           currencies[[currencies_names[j]]]$addon <- supervisory_factor*currencies[[currencies_names[j]]]$effective_notional
@@ -126,7 +147,7 @@ CalcAddon <- function(trades_tree, MF)  {
         refEntities[[refEntities_names[j]]]$add_on <- refEntities[[refEntities_names[j]]]$add_on*supervisory_factor
         supervisory_corel[j]  <- superv$Correlation[superv$Asset_Class==AssetClass&superv$SubClass==refEntities_trade$trade$SubClass]
         refEntities_addon[j] = refEntities[[refEntities_names[j]]]$add_on
-        refEntities[[refEntities_names[j]]]$supervisory_corel = supervisory_corel
+        refEntities[[refEntities_names[j]]]$supervisory_corel = supervisory_corel[j]
         refEntities[[refEntities_names[j]]]$supervisory_factor = supervisory_factor
       }
       systematic_component     <- (sum(refEntities_addon*supervisory_corel))^2

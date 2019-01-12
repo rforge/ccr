@@ -1,5 +1,11 @@
 runExampleCalcs <-function(trades, csas, colls)
 {
+  if(all(unlist(lapply(trades,function(x) x$TradeType=='Option'&x$BuySell=='Sell'))))
+  { 
+    cat('All trades are sold options, EAD is zero')
+    return(0)
+  }
+  
   ext_trade_ids_temp = array()
   
   trade_trees = list()
