@@ -1,7 +1,7 @@
 Package: SACCR
 Type: Package
 Title: SA Counterparty Credit Risk under Basel III
-Version: 2.2
+Version: 2.2.1
 Date: 2019-01-12
 Author: Tasos Grivas
 Maintainer: Tasos Grivas <info@openriskcalculator.com>
