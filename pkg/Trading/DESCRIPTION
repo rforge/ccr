@@ -46,3 +46,4 @@ Collate:
 		'ParseTrades.R'
 		'SampleEntropy.R'
 		'VariationOfInformation.R'
+RoxygenNote: 7.0.2
