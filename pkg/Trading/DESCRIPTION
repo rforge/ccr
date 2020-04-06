@@ -46,10 +46,3 @@ Collate:
 		'ParseTrades.R'
 		'SampleEntropy.R'
 		'VariationOfInformation.R'
-Config/reticulate:
-  list(
-    packages = list(
-      list(package = "pykalman", pip = TRUE)
-    )
-  )
-RoxygenNote: 7.0.2
