@@ -1,8 +1,8 @@
 Package: Trading
 Type: Package
-Title: CCR, Entropy-Based Correlation Estimates & Dynamic Beta 
+Title: CCR, Entropy-Based Correlation Estimates & Dynamic Beta
 Version: 2.0
-Date: 2020-04-05
+Date: 2020-04-19
 Author: Tasos Grivas
 Maintainer: Tasos Grivas <info@openriskcalculator.com>
 Description: Contains performance analysis metrics of track records including entropy-based
@@ -19,31 +19,13 @@ Imports: methods, reticulate, PerformanceAnalytics
 URL: www.openriskcalculator.com
 License: GPL-3
 LazyData: TRUE
-Collate: 
-		'AngularDistance.R'
-		'Future.R'
-		'Swap.R'
-		'Vol.R'
-		'Option.R'
-		'Trade.R'
-		'IRD.R'
-		'Bond.R'
-		'CSA.R'
-		'Chebyshev_distance.R'
-		'Collateral.R'
-		'Commodity.R'
-		'Credit.R'
-		'CrossSampleEntropy.R'
-		'Curve.R'
-		'DynamicBeta.R'
-		'Equity.R'
-		'FX.R'
-		'GetTradeDetails.R'
-		'HashTable.R'
-		'InformationAdjustedBeta.R'
-		'InformationAdjustedCorr.R'
-		'NormXASampEn.R'
-		'ParseTrades.R'
-		'SampleEntropy.R'
-		'VariationOfInformation.R'
+Collate: 'AngularDistance.R' 'Future.R' 'Swap.R' 'Vol.R' 'Option.R'
+        'Trade.R' 'IRD.R' 'Bond.R' 'CSA.R' 'Chebyshev_distance.R'
+        'Collateral.R' 'Commodity.R' 'Credit.R' 'CrossSampleEntropy.R'
+        'Curve.R' 'DynamicBeta.R' 'Equity.R' 'FX.R' 'GetTradeDetails.R'
+        'HashTable.R' 'InformationAdjustedBeta.R'
+        'InformationAdjustedCorr.R' 'NormXASampEn.R' 'ParseTrades.R'
+        'SampleEntropy.R' 'VariationOfInformation.R'
 RoxygenNote: 7.0.2
+NeedsCompilation: no
+Packaged: 2020-04-07 18:08:50 UTC; tasos
