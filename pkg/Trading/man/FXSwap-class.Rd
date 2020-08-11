@@ -33,7 +33,8 @@ Creates an FX Swap object with the relevant info needed to calculate the Exposur
 \examples{
 
 
-tr1 = FxSwap(Notional=10000,MtM=30,ccyPair="EUR/USD",Si=0,Ei=10,BuySell='Buy',fx_near_leg_fields='1000;-20;2020-02-11')
+tr1 = FxSwap(Notional=10000,MtM=30,ccyPair="EUR/USD",Si=0,Ei=10,BuySell='Buy',
+fx_near_leg_fields='1000;-20;2020-02-11')
 }
 \references{
 Basel Committee: The standardised approach for measuring counterparty credit risk exposures
