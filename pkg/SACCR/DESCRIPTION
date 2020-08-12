@@ -14,7 +14,7 @@ Description: Computes the Exposure-At-Default based on  the standardized approac
     netting sets and the risk factors. The basis and volatility transactions are
     also identified and treated in specific hedging sets whereby the corresponding 
     penalty factors are applied. All the examples appearing on the
-    regulatory paper (including the margined and the un-margined workflow) have been
+    regulatory papers (bothe for the margined and the un-margined workflow) have been
     implemented including the latest CRR2 developments.
 License: GPL-3
 Imports: methods, data.tree, jsonlite, Trading
