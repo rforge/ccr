@@ -48,7 +48,8 @@ calcEADRegulatory = function(trades, framework, sa_ccr_simplified="", CSA, colla
       OEM        = FALSE;
     }
     requireNamespace("SACCR")
-
+    
+    # calculating the maturity factor
     MF = CSA$CalcMF(simplified = simplified)
     # calculating the add-on
     trades_tree = SACCR::CreateTradeGraph(trades)
