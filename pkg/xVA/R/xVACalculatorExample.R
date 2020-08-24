@@ -11,7 +11,6 @@
 #' 
 xVACalculatorExample = function()
 {
-  requireNamespace("Trading")
   # framework can be either "IMM" or "CEM" or "SA-CCR"
   reg_data = list(framework = "SA-CCR", sa_ccr_simplified = "OEM", PD = 0.002, LGD = 0.6, return_on_capital = 0.15, cpty_rating = 'A', mva_days = 10, mva_percentile = 0.99)
 
