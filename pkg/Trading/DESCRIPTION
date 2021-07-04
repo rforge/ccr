@@ -1,8 +1,8 @@
 Package: Trading
 Type: Package
 Title: CCR, Entropy-Based Correlation Estimates & Dynamic Beta
-Version: 2.1
-Date: 2020-08-11
+Version: 2.2
+Date: 2021-07-04
 Author: Tasos Grivas
 Maintainer: Tasos Grivas <info@openriskcalculator.com>
 Description: Contains performance analysis metrics of track records including entropy-based
