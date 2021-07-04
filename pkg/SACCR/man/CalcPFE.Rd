@@ -4,10 +4,12 @@
 \alias{CalcPFE}
 \title{Calculates the PFE}
 \usage{
-CalcPFE(V_C, Addon_Aggregate, simplified)
+CalcPFE(V_C, V, Addon_Aggregate, simplified)
 }
 \arguments{
 \item{V_C}{the difference between the sum of the MtMs and the collateral}
+
+\item{V}{the sum of MVs of the trades}
 
 \item{Addon_Aggregate}{the aggregate amount of the Addon}
 
