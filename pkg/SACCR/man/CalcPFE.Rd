@@ -4,16 +4,16 @@
 \alias{CalcPFE}
 \title{Calculates the PFE}
 \usage{
-CalcPFE(V_C, V, Addon_Aggregate, simplified)
+CalcPFE(V_C, Addon_Aggregate, simplified, V = 0)
 }
 \arguments{
 \item{V_C}{the difference between the sum of the MtMs and the collateral}
 
-\item{V}{the sum of MVs of the trades}
-
 \item{Addon_Aggregate}{the aggregate amount of the Addon}
 
 \item{simplified}{(optional) When TRUE, the multiplier will be set to 1  as per the simplified & OEM approach}
+
+\item{V}{the sum of MVs of the trades}
 }
 \value{
 The Projected Future Exposure (PFE)
