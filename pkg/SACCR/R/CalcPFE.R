@@ -11,7 +11,9 @@
 #' @references Regulation (EU) 2019/876 of the European Parliament and of the Council of 20 May 2019
 #' http://data.europa.eu/eli/reg/2019/876/oj
 
-CalcPFE <- function(V_C,V,Addon_Aggregate, simplified)  {
+CalcPFE <- function(V_C,Addon_Aggregate, simplified,V=0)  {
+  
+  if(missing(V)) V=V_C
   
   V_C= min(V_C,V)
   if(simplified)
